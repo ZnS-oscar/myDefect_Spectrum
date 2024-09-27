@@ -146,3 +146,4 @@ events.*
 scripts/
 data_zoo
 weight
+runs/
