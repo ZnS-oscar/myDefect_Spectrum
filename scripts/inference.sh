@@ -1,13 +1,15 @@
 #!/bin/sh
-CUDA_VISIBLE_DEVICES='2, 3' \
+export PYTHONPATH=scripts:$PYTHONPATH
+
+CUDA_VISIBLE_DEVICES='0,1' \
 python -m torch.distributed.launch \
 --nproc_per_node=2 \
 --master_port=29511 \
-inference.py \
+scripts/inference.py \
 --step_inference 400 \
---sample_dir '/home/zfchen/working/diff_aug/generation_for_perception_test/screw_exp4' \
---large_recep '/home/zfchen/working/diff_aug/VISION_dataset/screw_large_recep/checkpoint/diffusion_150000.pt' \
---small_recep '' \
---num_defect 3 \
---large_recep_config '/home/zfchen/working/diff_aug/config/large_recep_vision_screw.yml' \
---small_recep_config '/home/zfchen/working/diff_aug/config/small_recep.yml' \
+--sample_dir 'runs/cable' \
+--large_recep 'weight/defect_gen/cable_large.pt' \
+--small_recep 'weight/defect_gen/cable_small.pt' \
+--num_defect 7 \
+--large_recep_config 'config/large_recep_cabel.yml' \
+--small_recep_config 'config/small_recep_cabel.yml' \

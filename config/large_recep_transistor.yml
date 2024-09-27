@@ -6,23 +6,26 @@ diffusion:
     num_timestep: 1000
 
 model:
-  target: models.unet.unet_receptive.UNetModel
+  target: models.unet.openaiunet.UNetModel
   params:
-    image_size: 256
-    in_channels: 11 #6
-    out_channels: 11 #6
-    model_channels: 192
+    image_size: 384 #256
+    in_channels: 7 #9
+    out_channels: 7 #9
+    model_channels: 192 #128
     #dropout: 0.3
-    # attention_downsample:
-    # - 8
-    # - 16
-    # - 32
-    attention_resolutions: 2
+    attention_downsample:
+    - 8
+    - 16
+    - 32
+    # attention_resolutions: 2
     num_res_blocks: 2
     num_head_channels: 16
     channel_mult:
     - 1
+    - 1
     - 2
+    - 2
+    - 4
     - 4
   ckpt: 
 
@@ -30,9 +33,9 @@ data:
   bs_per_gpu: 2
   num_workers: 1
   params:
-    dir:  /home/zfchen/working/cotton_fabric/cotton_fabric_mask
+    dir:  data_zoo/Defect_Spectrum/DS-MVTec/transistor
     resolution: 256
-    num_image_train: 50
+    num_image_train: 5
 
 optimizer:
   params:

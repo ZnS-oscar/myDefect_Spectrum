@@ -9,8 +9,8 @@ model:
   target: models.unet.openaiunet.UNetModel
   params:
     image_size: 256
-    in_channels: 9
-    out_channels: 9
+    in_channels: 11 #9
+    out_channels: 11 #9
     model_channels: 128
     #dropout: 0.3
     attention_downsample:

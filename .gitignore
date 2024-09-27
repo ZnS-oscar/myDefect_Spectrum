@@ -144,3 +144,5 @@ results/
 events.*
 
 scripts/
+data_zoo
+weight
